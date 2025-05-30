@@ -9,6 +9,15 @@ class WalletAnalyzer:
         self.wallets = {}
         self.parser = TransactionParser()
         
-    def analyze(self, address):
+    def analyze(self, address, transactions=None):
         """Analyze a wallet address"""
-        return {"address": address}
+        result = {
+            "address": address,
+            "risk_score": 0.0,
+            "tx_count": 0
+        }
+        
+        if transactions:
+            result["tx_count"] = len(transactions)
+            
+        return result
