@@ -3,11 +3,13 @@ Wallet Analyzer Module
 """
 
 from .parser import TransactionParser
+from .patterns import PatternRecognizer
 
 class WalletAnalyzer:
     def __init__(self):
         self.wallets = {}
         self.parser = TransactionParser()
+        self.pattern_recognizer = PatternRecognizer()
         
     def analyze(self, address, transactions=None):
         """Analyze a wallet address"""
