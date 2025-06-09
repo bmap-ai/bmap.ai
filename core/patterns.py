@@ -20,4 +20,13 @@ class PatternRecognizer:
         if len(transactions) > 10:
             patterns.append("high_frequency")
             
+        # Check for circular transactions
+        addresses = set()
+        for tx in transactions:
+            addresses.add(tx.get("from"))
+            addresses.add(tx.get("to"))
+        
+        if len(addresses) < len(transactions) * 0.5:
+            patterns.append("circular_flow")
+            
         return patterns
