@@ -7,9 +7,16 @@ class BundleDetector:
         self.bundles = []
         self.min_size = min_size
         
-    def detect(self, wallets):
+    def detect(self, wallets, transactions=None):
         """Detect wallet bundles"""
         # Simple clustering for now
         if len(wallets) >= self.min_size:
-            return [wallets[:self.min_size]]
+            bundles = []
+            # Group wallets with similar activity
+            for i in range(0, len(wallets), self.min_size):
+                bundle = wallets[i:i+self.min_size]
+                if len(bundle) >= self.min_size:
+                    bundles.append(bundle)
+            self.bundles = bundles
+            return bundles
         return []
