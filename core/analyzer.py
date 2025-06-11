@@ -33,4 +33,8 @@ class WalletAnalyzer:
             patterns = self.pattern_recognizer.detect(parsed_txs)
             result["patterns"] = patterns
             
+            # Calculate risk score
+            risk_score = self.risk_scorer.calculate_score(result)
+            result["risk_score"] = risk_score
+            
         return result
