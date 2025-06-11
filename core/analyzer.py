@@ -22,4 +22,11 @@ class WalletAnalyzer:
         if transactions:
             result["tx_count"] = len(transactions)
             
+            # Parse transactions
+            parsed_txs = [self.parser.parse(tx) for tx in transactions]
+            
+            # Detect patterns
+            patterns = self.pattern_recognizer.detect(parsed_txs)
+            result["patterns"] = patterns
+            
         return result
