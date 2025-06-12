@@ -16,4 +16,18 @@ class NeuralNetwork:
             keras.layers.Dense(32, activation='relu'),
             keras.layers.Dense(1, activation='sigmoid')
         ])
+        
+        model.compile(
+            optimizer='adam',
+            loss='binary_crossentropy',
+            metrics=['accuracy']
+        )
         return model
+        
+    def train(self, X, y, epochs=10):
+        """Train the model"""
+        return self.model.fit(X, y, epochs=epochs, verbose=0)
+        
+    def predict(self, X):
+        """Make predictions"""
+        return self.model.predict(X)
