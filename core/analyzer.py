@@ -4,12 +4,16 @@ Wallet Analyzer Module
 
 from .parser import TransactionParser
 from .patterns import PatternRecognizer
+from .risk_scorer import RiskScorer
+from .bundle_detector import BundleDetector
 
 class WalletAnalyzer:
     def __init__(self):
         self.wallets = {}
         self.parser = TransactionParser()
         self.pattern_recognizer = PatternRecognizer()
+        self.risk_scorer = RiskScorer()
+        self.bundle_detector = BundleDetector()
         
     def analyze(self, address, transactions=None):
         """Analyze a wallet address"""
