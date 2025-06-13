@@ -29,4 +29,8 @@ class PatternRecognizer:
         if len(addresses) < len(transactions) * 0.5:
             patterns.append("circular_flow")
             
+        # Check for mixer pattern
+        if len(addresses) > len(transactions) * 1.5:
+            patterns.append("mixer_interaction")
+            
         return patterns
