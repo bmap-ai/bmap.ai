@@ -13,7 +13,9 @@ class NeuralNetwork:
         """Build neural network model"""
         model = keras.Sequential([
             keras.layers.Dense(64, activation='relu', input_shape=(input_dim,)),
+            keras.layers.Dropout(0.2),
             keras.layers.Dense(32, activation='relu'),
+            keras.layers.Dropout(0.2),
             keras.layers.Dense(1, activation='sigmoid')
         ])
         
