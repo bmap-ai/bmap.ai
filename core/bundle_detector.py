@@ -2,6 +2,9 @@
 Bundle Detection Module
 """
 
+from sklearn.cluster import DBSCAN
+import numpy as np
+
 class BundleDetector:
     def __init__(self, min_size=3):
         self.bundles = []
