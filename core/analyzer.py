@@ -6,6 +6,7 @@ from .parser import TransactionParser
 from .patterns import PatternRecognizer
 from .risk_scorer import RiskScorer
 from .bundle_detector import BundleDetector
+from .cache import CacheManager
 
 class WalletAnalyzer:
     def __init__(self):
@@ -14,6 +15,7 @@ class WalletAnalyzer:
         self.pattern_recognizer = PatternRecognizer()
         self.risk_scorer = RiskScorer()
         self.bundle_detector = BundleDetector()
+        self.cache = CacheManager()
         
     def analyze(self, address, transactions=None):
         """Analyze a wallet address"""
