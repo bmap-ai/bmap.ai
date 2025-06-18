@@ -33,3 +33,15 @@ class NeuralNetwork:
     def predict(self, X):
         """Make predictions"""
         return self.model.predict(X)
+    
+    def evaluate(self, X, y):
+        """Evaluate model performance"""
+        return self.model.evaluate(X, y, verbose=0)
+    
+    def save_model(self, filepath):
+        """Save model to file"""
+        self.model.save(filepath)
+    
+    def load_model(self, filepath):
+        """Load model from file"""
+        self.model = keras.models.load_model(filepath)
