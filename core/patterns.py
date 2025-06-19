@@ -3,6 +3,7 @@ Pattern Recognition Module
 """
 
 import numpy as np
+from collections import Counter
 
 class PatternRecognizer:
     def __init__(self):
@@ -32,5 +33,12 @@ class PatternRecognizer:
         # Check for mixer pattern
         if len(addresses) > len(transactions) * 1.5:
             patterns.append("mixer_interaction")
+        
+        # Check for flash loan pattern
+        timestamps = [tx.get("timestamp", 0) for tx in transactions]
+        if timestamps:
+            time_diffs = np.diff(sorted(timestamps))
+            if len(time_diffs) > 0 and np.mean(time_diffs) < 60:
+                patterns.append("flash_loan")
             
         return patterns
