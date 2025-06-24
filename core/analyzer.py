@@ -8,6 +8,7 @@ from .risk_scorer import RiskScorer
 from .bundle_detector import BundleDetector
 from .cache import CacheManager
 from .metrics import MetricsCollector
+from .anomaly_detector import AnomalyDetector
 
 class WalletAnalyzer:
     def __init__(self):
@@ -18,6 +19,7 @@ class WalletAnalyzer:
         self.bundle_detector = BundleDetector()
         self.cache = CacheManager()
         self.metrics = MetricsCollector()
+        self.anomaly_detector = AnomalyDetector()
         
     def analyze(self, address, transactions=None):
         """Analyze a wallet address"""
