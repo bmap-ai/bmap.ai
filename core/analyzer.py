@@ -9,6 +9,8 @@ from .bundle_detector import BundleDetector
 from .cache import CacheManager
 from .metrics import MetricsCollector
 from .anomaly_detector import AnomalyDetector
+from .graph_analyzer import GraphAnalyzer
+from utils import logger
 
 class WalletAnalyzer:
     def __init__(self):
@@ -20,6 +22,7 @@ class WalletAnalyzer:
         self.cache = CacheManager()
         self.metrics = MetricsCollector()
         self.anomaly_detector = AnomalyDetector()
+        self.graph_analyzer = GraphAnalyzer()
         
     def analyze(self, address, transactions=None):
         """Analyze a wallet address"""
@@ -46,5 +49,12 @@ class WalletAnalyzer:
             # Record metrics
             self.metrics.record("analysis_count", 1)
             self.metrics.record("risk_score", risk_score)
+            
+            # Graph analysis
+            self.graph_analyzer.build_graph(parsed_txs)
+            graph_metrics = self.graph_analyzer.analyze()
+            result["graph_metrics"] = graph_metrics
+            
+            logger.info(f"Analyzed wallet {address}: risk_score={risk_score}")
             
         return result
