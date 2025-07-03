@@ -2,11 +2,13 @@
 Main API Module
 """
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, WebSocket
 from core.analyzer import WalletAnalyzer
 from database import get_db, engine, Base
 from sqlalchemy.orm import Session
 from .auth import AuthManager
+from .websocket import websocket_endpoint
+from monitoring import track_request
 
 app = FastAPI(title="bmap.ai", version="1.0.0")
 analyzer = WalletAnalyzer()
@@ -17,7 +19,12 @@ Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def read_root():
+    track_request("GET", "/")
     return {"name": "bmap.ai", "status": "active"}
+
+@app.websocket("/ws")
+async def websocket_route(websocket: WebSocket):
+    await websocket_endpoint(websocket)
 
 @app.post("/analyze/{address}")
 def analyze_wallet(address: str, db: Session = Depends(get_db)):
