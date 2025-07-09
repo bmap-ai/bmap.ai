@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bmap-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bmap-api
+  template:
+    metadata:
+      labels:
+        app: bmap-api
+    spec:
+      containers:
+      - name: api
+        image: bmap-ai:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bmap-api-service
+spec:
+  selector:
+    app: bmap-api
+  ports:
+    - port: 80
+      targetPort: 8000
+  type: LoadBalancer
