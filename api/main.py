@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from .auth import AuthManager
 from .websocket import websocket_endpoint
 from monitoring import track_request
+import time
 
 app = FastAPI(title="bmap.ai", version="1.0.0")
 analyzer = WalletAnalyzer()
@@ -37,4 +38,4 @@ def analyze_wallet(address: str, db: Session = Depends(get_db)):
 
 @app.get("/health")
 def health_check():
-    return {"status": "healthy"}
+    return {"status": "healthy", "version": "1.0.0", "timestamp": time.time()}
