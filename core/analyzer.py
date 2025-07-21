@@ -10,6 +10,7 @@ from .cache import CacheManager
 from .metrics import MetricsCollector
 from .anomaly_detector import AnomalyDetector
 from .graph_analyzer import GraphAnalyzer
+from .alert_system import AlertSystem
 from utils import logger
 
 class WalletAnalyzer:
@@ -23,6 +24,7 @@ class WalletAnalyzer:
         self.metrics = MetricsCollector()
         self.anomaly_detector = AnomalyDetector()
         self.graph_analyzer = GraphAnalyzer()
+        self.alert_system = AlertSystem()
         
     def analyze(self, address, transactions=None):
         """Analyze a wallet address"""
