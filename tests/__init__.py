@@ -1,1 +1,3 @@
-# Tests
+"""
+Test Suite for bmap.ai
+"""
