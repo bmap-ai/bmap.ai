@@ -16,3 +16,8 @@ This project aims to analyze blockchain wallet behaviors using machine learning.
 - Caching system for performance optimization
 - Metrics collection and monitoring
 - RESTful API with FastAPI
+- WebSocket support for real-time updates
+- Batch processing capabilities
+- Time series analysis
+- Anomaly detection
+- Data export in multiple formats
