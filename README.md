@@ -1,10 +1,14 @@
 # bmap.ai
 
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-green.svg)]()
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)]()
+
 Blockchain wallet analysis using AI
 
 ## Overview
 
-This project aims to analyze blockchain wallet behaviors using machine learning.
+bmap.ai is an advanced blockchain wallet analysis platform that uses machine learning and AI to detect patterns, assess risks, and identify transaction bundles in real-time.
 
 ## Features
 
