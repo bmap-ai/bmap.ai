@@ -8,10 +8,20 @@ from database import get_db, engine, Base
 from sqlalchemy.orm import Session
 from .auth import AuthManager
 from .websocket import websocket_endpoint
+from .v2.endpoints import router as v2_router
 from monitoring import track_request
 import time
 
-app = FastAPI(title="bmap.ai", version="1.0.0")
+# Include v2 routes
+app.include_router(v2_router)
+
+app = FastAPI(
+    title="bmap.ai",
+    version="1.0.0",
+    description="Blockchain wallet analysis platform",
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
 analyzer = WalletAnalyzer()
 auth_manager = AuthManager()
 
