@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.0] - 2025-08-11
+
+### Added
+- API v2 endpoints
+- Performance optimizations
+- GitHub Actions workflows
+- Security audit
+- Comprehensive documentation
+- Example code
+- Issue templates
+
+### Improved
+- Test coverage to 85%
+- API documentation
+- Error handling
+
 ## [1.0.0] - 2025-07-31
 
 ### Added
